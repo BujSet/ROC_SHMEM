@@ -132,7 +132,7 @@ void rocm_memory_lock_to_fine_grain(void* ptr, size_t size, void** gpu_ptr,
 uint64_t wallClk_freq_mhz() {
   hipDeviceProp_t deviceProp{};
   CHECK_HIP(hipGetDeviceProperties(&deviceProp, 0));
-  switch (deviceProp.gcnArch) {
+  switch (deviceProp.gcnArchName) {
     case 900:  // MI25
       return 27;
     case 906:
