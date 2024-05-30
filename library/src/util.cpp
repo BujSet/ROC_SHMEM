@@ -132,6 +132,9 @@ void rocm_memory_lock_to_fine_grain(void* ptr, size_t size, void** gpu_ptr,
 uint64_t wallClk_freq_mhz() {
   hipDeviceProp_t deviceProp{};
   CHECK_HIP(hipGetDeviceProperties(&deviceProp, 0));
+  printf("%s/n", deviceProp.gcnArchName);
+  return 25; //MI200
+  /*
   switch (deviceProp.gcnArchName) {
     case 900:  // MI25
       return 27;
@@ -145,6 +148,7 @@ uint64_t wallClk_freq_mhz() {
       assert(false && "clock data unavailable");
       return 0;
   }
+  */
 }
 
 }  // namespace rocshmem
